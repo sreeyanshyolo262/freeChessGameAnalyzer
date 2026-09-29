@@ -1,0 +1,475 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #1e1e2e;
+  color: #e0e0e0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+}
+
+/* ── Intro / PGN input screen ── */
+.intro-screen {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 60px 24px;
+}
+
+.intro-screen h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.pgn-input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+textarea {
+  background: #2a2a3d;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 10px;
+  font-family: monospace;
+  font-size: 13px;
+}
+
+button {
+  background: #4a7dff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background: #3a6aee;
+}
+
+button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.error {
+  color: #e74c3c;
+}
+
+/* ── Review layout ── */
+.review-app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.review-topbar {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  border-bottom: 1px solid #333;
+  flex-shrink: 0;
+}
+
+.review-topbar h2 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.topbar-spacer {
+  width: 130px;
+}
+
+.home-btn {
+  background: #2a2a3d;
+  width: 130px;
+}
+
+.home-btn:hover {
+  background: #3a3a55;
+}
+
+.review-layout {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  overflow: hidden;
+}
+
+.board-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.board-with-bar {
+  display: flex;
+  gap: 10px;
+  height: min(72vh, 640px);
+}
+
+.board-wrapper-large {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.eval-bar {
+  width: 24px;
+  height: 100%;
+  background: #333;
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.eval-bar-white {
+  background: #f0f0f0;
+  width: 100%;
+}
+
+.eval-bar-black {
+  background: #333;
+  width: 100%;
+}
+
+.eval-label {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: #4a7dff;
+  font-weight: bold;
+}
+
+.board-toolbar {
+  display: flex;
+  gap: 8px;
+}
+
+.board-toolbar button {
+  padding: 8px 14px;
+  font-size: 12px;
+  background: #3a3a55;
+}
+
+.board-toolbar button:hover {
+  background: #4a4a6a;
+}
+
+.board-toolbar button.active-toggle {
+  background: #4a7dff;
+}
+
+.explore-hint {
+  font-size: 12px;
+  color: #f1c40f;
+  background: #2a2a3d;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin: 0;
+}
+
+.nav-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-controls button {
+  padding: 8px 20px;
+  font-size: 14px;
+}
+
+/* ── Side panel ── */
+.side-panel {
+  width: 380px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.summary-panel {
+  background: #2a2a3d;
+  border-radius: 8px;
+  padding: 16px;
+  flex-shrink: 0;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.summary-grid p {
+  margin: 4px 0;
+  font-size: 13px;
+}
+
+.explain-section {
+  background: #232334;
+  border-radius: 8px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.explain-btn {
+  background: #8e44ad;
+  width: 100%;
+}
+
+.explain-btn:hover {
+  background: #9b59b6;
+}
+
+.explain-btn:disabled {
+  background: #555;
+}
+
+.current-move-tag {
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline-badge {
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.explanation-box {
+  background: #2a2a3d;
+  border-left: 3px solid #8e44ad;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.move-list {
+  background: #2a2a3d;
+  border-radius: 8px;
+  padding: 12px;
+  flex: 1;
+  min-height: 200px;
+  overflow-y: auto;
+}
+
+.move-list h3 {
+  margin-top: 0;
+}
+
+.move-list table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.move-list th {
+  text-align: left;
+  padding: 6px;
+  border-bottom: 1px solid #444;
+  position: sticky;
+  top: 0;
+  background: #2a2a3d;
+}
+
+.move-list td {
+  padding: 6px;
+  border-bottom: 1px solid #333;
+}
+
+.move-list tr {
+  cursor: pointer;
+}
+
+.move-list tr:hover {
+  background: #333a55;
+}
+
+.active-row {
+  background: #333a55 !important;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  color: #1e1e2e;
+  font-weight: bold;
+}
+
+/* ── Move badge on board ── */
+.move-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border: 1.5px solid white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  pointer-events: none;
+}
+.similar-btn {
+  background: #16a085;
+  width: 100%;
+}
+
+.similar-btn:hover {
+  background: #1abc9c;
+}
+
+.similar-matches {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.no-matches {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+.match-card {
+  background: #2a2a3d;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+
+.match-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 6px;
+  color: #ccc;
+  margin-bottom: 4px;
+}
+
+.match-header .vs {
+  color: #666;
+}
+
+.match-body {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.match-move {
+  color: #16a085;
+}
+
+.match-result {
+  color: #888;
+  font-weight: normal;
+}
+.chesscom-section {
+  background: #232334;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.chesscom-section h3 {
+  margin-top: 0;
+}
+
+.chesscom-input-row {
+  display: flex;
+  gap: 8px;
+}
+
+.chesscom-input-row input {
+  flex: 1;
+  background: #2a2a3d;
+  color: #e0e0e0;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.chesscom-games {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.game-card {
+  background: #2a2a3d;
+  border-radius: 6px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.game-card:hover {
+  background: #333a55;
+}
+
+.game-card-players {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.game-card-players .vs {
+  color: #666;
+  font-weight: normal;
+}
+
+.game-card-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #999;
+  margin-top: 4px;
+}
+
+.game-result {
+  font-weight: bold;
+  color: #4a7dff;
+}
+
+.divider {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  margin: 16px 0;
+  position: relative;
+}
